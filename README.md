@@ -22,14 +22,12 @@ Basic commands:
 
     3. Arrays, String of characters, Pointers
 
-Custom by array, string and pointer
-
+> Custom by array, string and pointer
 > I truly wonder what's the point behind this.
 
     4. Functions
 
-Custom by function
-
+> Custom by function
 > I hope it's really helpful
 
     5. Structured data type

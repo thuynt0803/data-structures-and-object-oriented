@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.rest": "javascript",
+        "conio.h": "c",
+        "ostream": "cpp"
+    }
+}
