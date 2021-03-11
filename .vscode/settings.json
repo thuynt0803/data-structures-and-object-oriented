@@ -2,6 +2,7 @@
     "files.associations": {
         "*.rest": "javascript",
         "conio.h": "c",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iostream": "cpp"
     }
 }

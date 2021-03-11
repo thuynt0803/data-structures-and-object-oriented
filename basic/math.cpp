@@ -1,24 +1,27 @@
 #include <iostream>
+#include <math.h>
 using namespace std;
 
-int myTong(int x, int y)
+int math(int x, int y, char tt)
 {
-    return x + y;
-}
-
-int myHieu(int x, int y)
-{
-    return x - y;
-}
-
-int myTich(int x, int y)
-{
-    return x * y;
-}
-
-int mySodu(int x, int y)
-{
-    return x / y;
+    switch (tt)
+    {
+    case '+':
+        cout << "Bieu thuc: " << x << " + " << y << " = " << x + y << endl;
+        break;
+    case '-':
+        cout << "Bieu thuc: " << x << " - " << y << " = " << x - y << endl;
+        break;
+    case '*':
+        cout << "Bieu thuc: " << x << " * " << y << " = " << x * y << endl;
+        break;
+    case '%':
+        cout << "Bieu thuc: " << x << " % " << y << " = " << x % y << endl;
+        break;
+    default:
+        cout << "Khong co phep toan " << tt << endl;
+        break;
+    }
 }
 
 int gcd(int x, int y) // GCD – Greatest Common Divisor (UCLN)
@@ -49,17 +52,34 @@ int lcm(int x, int y) // LCM - lowest common multiple (BCNN)
     return x * y / gcd(x, y);
 }
 
+int prime(int x, int y) // Check for prime numbers (so nguyen to)
+{
+    int i, check = 1;
+    for (i = 2; i <= (int(sqrt(x))); i++)
+    {
+    }
+}
+
 int main()
 {
     int a, b;
+    char tt, ch;
     cout << "Nhap a = ";
     cin >> a;
     cout << "Nhap b = ";
     cin >> b;
-    cout << "--> Tong a + b = " << myTong(a, b) << endl;
-    cout << "--> Hieu a - b = " << myHieu(a, b) << endl;
-    cout << "--> Tich a * b = " << myTich(a, b) << endl;
-    cout << "--> Thuong a / b = " << mySodu(a, b) << endl;
+    do
+    {
+        cout << "Phep toan thuc hien: ";
+        cin >> tt;
+        math(a, b, tt);
+        cout << "Thuc hien bieu thuc tiep theo? (Y/N) - ";
+        cin >> ch;
+
+    } while (ch == 'y' || ch == 'Y');
+
+    prime(a, b);
+
     cout << "--> UCLN(a,b) = " << gcd(a, b) << endl;
     cout << "--> BCNN(a,b) = " << lcm(a, b) << endl;
     return 0;
