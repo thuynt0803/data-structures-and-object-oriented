@@ -22,7 +22,7 @@ int countDigit(int n) // Dem so chu so
     return count;
 }
 
-int isAmstrong(int n)
+bool isAmstrong(int n)
 {
     int numDigit = countDigit(n);
     int sum = 0, tmp = n, last;
