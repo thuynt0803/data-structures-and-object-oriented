@@ -3,6 +3,7 @@
         "*.rest": "javascript",
         "conio.h": "c",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "random": "cpp"
     }
 }

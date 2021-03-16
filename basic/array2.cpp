@@ -14,9 +14,9 @@ using namespace std;
 #define N 50
 #define M 50
 #define P 50
-float matrixA[N][M], matrixB[N][M], matrixSum[N][M], matrixC[M][P], matrixMulti[N][P];
+int matrixA[N][M], matrixB[N][M], matrixSum[N][M], matrixC[M][P], matrixMulti[N][P];
 
-void inputMatrix(int n, int m, int p)
+int inputMatrix(int n, int m, int p)
 {
 
     cout << "Nhap cac phan tu ma tran A:" << endl;
@@ -51,7 +51,7 @@ void inputMatrix(int n, int m, int p)
     }
 }
 
-void sumMatrix(int n, int m, int p) // matrixSum[][] = A[][] + B[][]
+int sumMatrix(int n, int m, int p) // matrixSum[][] = A[][] + B[][]
 {
     for (int i = 0; i < n; i++)
     {
@@ -72,7 +72,7 @@ void sumMatrix(int n, int m, int p) // matrixSum[][] = A[][] + B[][]
     }
 }
 
-void multiMatrix(int n, int m, int p) // matrixMulti[][] = matrixSum[][] * C[][]
+int multiMatrix(int n, int m, int p) // matrixMulti[][] = matrixSum[][] * C[][]
 {
     for (int i = 0; i < n; i++)
     {

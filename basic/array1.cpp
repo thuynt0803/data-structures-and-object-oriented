@@ -13,7 +13,7 @@ void inputArr(int a[], int n)
     }
 }
 
-void outputArr(int a[], int n)
+int outputArr(int a[], int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -21,7 +21,7 @@ void outputArr(int a[], int n)
     }
 }
 
-void increaseSortUp(int a[], int n)
+int increaseSortUp(int a[], int n)
 {
     int tg;
     for (int i = 0; i < n - 1; i++)
