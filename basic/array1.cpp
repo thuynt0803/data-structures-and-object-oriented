@@ -1,3 +1,7 @@
+/*
+    Yêu cầu:  Làm việc với mảng 1 chiều
+*/
+
 #include <iostream>
 using namespace std;
 
