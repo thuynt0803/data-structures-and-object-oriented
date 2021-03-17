@@ -15,6 +15,16 @@ int inputArr(int *p, int n)
 
 int outputArr(int *p, int n)
 {
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << "  " << *(p + i);
+    }
+    cout << endl;
+}
+
+int sortIncrease(int *p, int n)
+{
     int tg;
     for (int i = 0; i < n - 1; i++)
     {
@@ -29,21 +39,26 @@ int outputArr(int *p, int n)
             }
         }
     }
+}
 
-    cout << "Day so sau khi sap xep tang dan:";
+bool checkX(int *p, int n, int x)
+{
     for (int i = 0; i < n; i++)
     {
-        cout << "  " << *(p + i);
+        if (*(p + i) == x)
+        {
+            return 1;
+        }
     }
-    cout << endl;
+    return 0;
 }
 
 int countX(int *p, int n, int x)
 {
     int count = 0;
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < n; i++)
     {
-        if (*(p + i) == x)
+        if (checkX(p, n, x) == 1)
         {
             count++;
         }
@@ -53,11 +68,12 @@ int countX(int *p, int n, int x)
 
 int locationX(int *p, int n, int x)
 {
+
     for (int i = 0; i < n; i++)
     {
-        if (x == *(p + i))
+        if (checkX(p, n, x) == 1)
         {
-            cout << " " << i + 1;
+            cout << "\t" << i + 1;
         }
     }
 }
@@ -105,6 +121,10 @@ int main()
     cout << "\t- Cac vi tri xuat hien 'x' trong day so la: " << locationX(p, n, x) << endl;
     cout << "\t- Vi tri xuat hien 'x' dau tien trong day ban dau la numbers[" << firstX(p, n, x) << "]." << endl;
     cout << "\t- Vi tri xuat hien 'x' cuoi cung trong day ban dau la numbers[" << lastX(p, n, x) << "]." << endl;
+
+    sortIncrease(p, n);
+    cout << "Day so sau khi sap xep tang dan:";
+    outputArr(p, n);
 
     return 0;
 }
