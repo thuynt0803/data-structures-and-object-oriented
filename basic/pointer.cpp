@@ -66,6 +66,7 @@ int countX(int *p, int n, int x)
     cout << "\t- Phan tu 'x' xuat hien " << count << " lan trong day so." << endl;
 }
 
+// ERROR
 int locationX(int *p, int n, int x)
 {
 
@@ -104,7 +105,7 @@ int main()
     p = numbers;
     do
     {
-        cout << "Nhap so phan tu: n = ";
+        cout << "\nNhap so phan tu: n = ";
         cin >> n;
         if (n > N)
         {

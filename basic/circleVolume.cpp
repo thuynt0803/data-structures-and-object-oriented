@@ -9,17 +9,18 @@ using namespace std;
 
 const double pi = 3.14;
 
-float roundVolume(float R)
+float circleVolume(float R)
 {
     return 4 * pi * pow(R, 3) / 3;
 }
 
+
 int main()
 {
     float R;
-    cout << "Ban kinh: R = ";
+    cout << "\nBan kinh: R = ";
     cin >> R;
-    float v = roundVolume(R);
+    float v = circleVolume(R);
     printf("The tich hinh tron: V = %.2f", v);
 
     return 0;

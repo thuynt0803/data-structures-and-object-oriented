@@ -12,61 +12,61 @@
 #include <string.h>
 using namespace std;
 
-struct doanhnghiep
+struct company
 {
-    char madn[30];
-    char giamdoc[30];
-    float vondieule;
-    int sonhanvien;
+    char idDN[30];
+    char manager[30];
+    float capital;
+    int employees;
 };
 
-void input1DN(doanhnghiep &dn)
+void inputOneDN(company &dn)
 {
     cout << "Ma DN: ";
     fflush(stdin); //xoa bo nho dem
-    gets(dn.madn);
+    gets(dn.idDN);
     cout << "Giam doc: ";
-    gets(dn.giamdoc);
+    gets(dn.manager);
     cout << "Von dieu le: ";
     fflush(stdin);
-    cin >> dn.vondieule;
+    cin >> dn.capital;
     cout << "So nhan vien: ";
-    cin >> dn.sonhanvien;
+    cin >> dn.employees;
 }
 
-void output1DN(doanhnghiep dn)
+void outputOneDN(company dn)
 {
-    cout << "\n\nMADN: " << dn.madn << endl;
-    cout << "GIAM DOC: " << dn.giamdoc << endl;
-    cout << "VON: " << dn.vondieule << endl;
-    cout << "SO NV: " << dn.sonhanvien << endl;
+    cout << "\n\nMA DN: " << dn.idDN << endl;
+    cout << "GIAM DOC: " << dn.manager << endl;
+    cout << "VON: " << dn.capital << endl;
+    cout << "SO NV: " << dn.employees << endl;
 }
 
-void inputListDN(doanhnghiep ds[], int n)
+void inputListDN(company ds[], int n)
 {
     for (int i = 0; i < n; i++)
     {
-        input1DN(ds[i]);
+        inputOneDN(ds[i]);
         cout << endl;
     }
 }
 
-void outputListDN(doanhnghiep ds[], int n)
+void outputListDN(company ds[], int n)
 {
     for (int i = 0; i < n; i++)
     {
-        output1DN(ds[i]);
+        outputOneDN(ds[i]);
     }
 }
 
-void sortbyVon(doanhnghiep ds[], int n) // su dung giai thuat sx noi bot
+void sortByCapital(company ds[], int n) // SX tăng dần vốn, sử dụng thuật toán sắp xếp nổi bọt
 {
-    doanhnghiep tg; // tg = trung gian
+    company tg; // tg = trung gian
     for (int i = 0; i < n - 1; i++)
     {
         for (int j = i + 1; j < n; j++)
         {
-            if (ds[i].vondieule > ds[j].vondieule)
+            if (ds[i].capital > ds[j].capital)
             {
                 tg = ds[i];
                 ds[i] = ds[j];
@@ -76,39 +76,39 @@ void sortbyVon(doanhnghiep ds[], int n) // su dung giai thuat sx noi bot
     }
 }
 
-void printDN(doanhnghiep dn)
+void printDN(company dn)
 {
-    cout << "Ma DN: " << dn.madn << endl;
-    cout << "So NV: " << dn.sonhanvien << endl;
+    cout << "Ma DN: " << dn.idDN << endl;
+    cout << "So NV: " << dn.employees << endl;
 }
 
-void printMaDN(doanhnghiep ds[], int n)
+void printMaDN(company ds[], int n)
 {
     for (int i = 0; i < n; i++)
     {
-        if (ds[i].sonhanvien > 300 && ds[i].madn[0] == 'D' && ds[i].madn[1] == 'N')
+        if (ds[i].employees > 300 && ds[i].idDN[0] == 'D' && ds[i].idDN[1] == 'N')
         {
             printDN(ds[i]);
         }
     }
 }
 
-int checkInvalid(char madn[])
+int checkInvalid(char idDN[])
 {
-    for (int i = 0; i < strlen(madn); i++)
+    for (int i = 0; i < strlen(idDN); i++)
     {
-        if (madn[i] == ' ')
+        if (idDN[i] == ' ')
             return 1;
     }
     return 0;
 }
 
-void countInvalid(doanhnghiep ds[], int n)
+void countInvalid(company ds[], int n)
 {
     int dem = 0;
     for (int i = 0; i < n; i++)
     {
-        if (ds[i].vondieule < 10 || checkInvalid(ds[i].madn) == 1)
+        if (ds[i].capital < 10 || checkInvalid(ds[i].idDN) == 1)
         {
             dem++;
         }
@@ -118,9 +118,9 @@ void countInvalid(doanhnghiep ds[], int n)
 
 int main()
 {
-    doanhnghiep listDN[50];
+    company listDN[50];
     int n;
-    cout << "Nhap so DN: n = ";
+    cout << "\nNhap so DN: n = ";
     cin >> n;
     cout << endl;
 
@@ -128,7 +128,7 @@ int main()
     cout << "Danh sach doanh nghiep vua nhap la:" << endl;
     outputListDN(listDN, n);
 
-    sortbyVon(listDN, n);
+    sortByCapital(listDN, n);
     cout << "\nDanh sach doanh nghiep sau khi sap xep tang dan theo von dieu le:" << endl;
     outputListDN(listDN, n);
 

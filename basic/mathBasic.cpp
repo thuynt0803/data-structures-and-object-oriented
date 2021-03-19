@@ -1,3 +1,15 @@
+/*
+    Thư viện toán học: cmath    
+    Các hàm toán  học:
+        - hàm mũ: pow(x,n)
+        - hàm tính căn bậc 2 của 1 số: sqrt(x)
+        - hàm tính trị tuyệt đối: abs(x)
+        - hàm tính e mũ x: exp(x)
+        - hàm lượng giác: sin(x); cos(x); tan(x); 1/tan(x);
+        - hàm tính logarit: log(x); ln(xl = og10(x);
+*/
+
+
 #include <iostream>
 #include <math.h>
 using namespace std;

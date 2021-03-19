@@ -25,7 +25,7 @@ int inputMatrix(int n, int m, int p)
         for (int j = 0; j < m; j++)
         {
             // printf("A[%d][%d] = ", i, j);
-            cout << "A[" << i << "][" << j << "] = ";
+            cout << "\tA[" << i << "][" << j << "] = ";
             cin >> matrixA[i][j];
         }
     }
@@ -35,7 +35,7 @@ int inputMatrix(int n, int m, int p)
     {
         for (int j = 0; j < m; j++)
         {
-            printf("B[%d][%d] = ", i, j);
+            printf("\tB[%d][%d] = ", i, j);
             cin >> matrixB[i][j];
         }
     }
@@ -45,7 +45,7 @@ int inputMatrix(int n, int m, int p)
     {
         for (int j = 0; j < p; j++)
         {
-            cout << "C[" << i << "][" << j << "] = ";
+            cout << "\tC[" << i << "][" << j << "] = ";
             cin >> matrixC[i][j];
         }
     }
@@ -140,7 +140,7 @@ int main()
     // Kiem tra neu so dong hoac so cot vuot qua 50
     do
     {
-        cout << "Nhap so phan tu N: n = ";
+        cout << "\nNhap so phan tu N: n = ";
         cin >> n;
         cout << "Nhap so phan tu M: m = ";
         cin >> m;

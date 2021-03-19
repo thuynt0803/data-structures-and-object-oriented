@@ -43,7 +43,7 @@ int main()
     char ch;
     do
     {
-        cout << "Enter a positive integer: ";
+        cout << "\nEnter a positive integer: ";
         cin >> n;
 
         if (n < 0)

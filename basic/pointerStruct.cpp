@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cstdio>
+#include <fstream> // file
 using namespace std;
 
 struct name
@@ -32,7 +33,7 @@ struct employee
     int luong;
 };
 
-#define N 100
+#define N 50
 employee listEmployee[N];
 void inputListEmployee(employee *ptr, int n);
 void outputListEmployee(employee *ptr, int n);
@@ -51,7 +52,6 @@ void inputListEmployee(employee *ptr, int n)
         cout << "\tTen: ";
         gets((ptr + i)->hoten.ten);
         cout << "\tNgay sinh (dd/mm/yyy): ";
-        // cin.ignore();
         fflush(stdin);
         cin >> (ptr + i)->ngaysinh.day;
         cin >> (ptr + i)->ngaysinh.month;
@@ -76,12 +76,48 @@ void outputListEmployee(employee *ptr, int n)
     for (int i = 0; i < n; i++)
     {
         cout << "    " << (ptr + i)->hoten.ho << " " << (ptr + i)->hoten.tendem << " " << (ptr + i)->hoten.ten << "\t||\t" << (ptr + i)->ngaysinh.day << "/" << (ptr + i)->ngaysinh.month << "/" << (ptr + i)->ngaysinh.year << "\t||\t" << (ptr + i)->quequan << "\t||\t " << (ptr + i)->ngayvaolam.day << "/" << (ptr + i)->ngayvaolam.month << "/" << (ptr + i)->ngayvaolam.year << "\t||\t" << (ptr + i)->luong << endl;
-        // cout << "   " << *(ptr + i).hoten.ho << " " << *(ptr + i).hoten.tendem << " " << *(ptr + i).hoten.ten << "\t||\t" << *(ptr + i).ngaysinh.day << "/" << *(ptr + i).ngaysinh.month << "/" << *(ptr + i).ngaysinh.year << "\t||\t" << *(ptr + i).quequan << "\t\t||\t" << *(ptr + i).ngayvaolam.day << "/" << *(ptr + i).ngayvaolam.month << "/" << *(ptr + i).ngayvaolam.year << "\t||\t" << *(ptr + i).luong << endl;
+    }
+}
+
+int lowestSalary(employee *ptr, int n)
+{
+    int lowestSalary;
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if ((ptr + i)->luong < (ptr + j)->luong)
+            {
+                lowestSalary = (ptr + i)->luong;
+                (ptr + i)->luong = (ptr + j)->luong;
+                (ptr + j)->luong = lowestSalary;
+            }
+        }
+    }
+    return lowestSalary;
+}
+
+int highestSalary(employee *ptr, int n)
+{
+    int highestSalary;
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if ((ptr + i)->luong > (ptr + j)->luong)
+            {
+                highestSalary = (ptr + i)->luong;
+                (ptr + i)->luong = (ptr + j)->luong;
+                (ptr + j)->luong = highestSalary;
+            }
+        }
     }
 }
 
 int main()
 {
+    fstream f;
+    f.open("employee.txt", ios::out);
 
     employee *ptr;
     ptr = listEmployee; // = &listEmployee[0]
@@ -97,10 +133,12 @@ int main()
         cout << endl;
     } while (n > N);
 
-    cout << "NHAP CHI TIET THONG TIN NHAN VIEN" << endl;
+    cout << "================= NHAP CHI TIET THONG TIN NHAN VIEN =================" << endl;
     inputListEmployee(ptr, n);
-    cout << "\nTHONG TIN NHAN VIEN" << endl;
+    cout << "\n======================= THONG TIN NHAN VIEN =======================" << endl;
     outputListEmployee(ptr, n);
+    cout << "\n==> Muc luong thap nhat o cong ty la: " << lowestSalary(ptr, n) << endl;
+    cout << "\n==> Muc luong cao nhat o cong ty la: " << highestSalary(ptr, n) << endl;
 
     return 0;
 }

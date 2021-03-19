@@ -19,7 +19,7 @@ int main()
 
     cout << "\n\"Hello, I am " << fullname << ", I am " << age << " year olds.\"" << endl;
     size_t length = strlen(fullname); // độ dài của chuỗi
-    cout << "Do dai cua chuoi fullname la: " << length << endl;
+    cout << "\nDo dai cua chuoi fullname la: " << length << endl;
 
     return 0;
 }
