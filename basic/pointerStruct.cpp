@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <cstdio>
-#include <fstream> // file
 using namespace std;
 
 struct name
@@ -116,9 +115,6 @@ int highestSalary(employee *ptr, int n)
 
 int main()
 {
-    fstream f;
-    f.open("employee.txt", ios::out);
-
     employee *ptr;
     ptr = listEmployee; // = &listEmployee[0]
     int n;
@@ -134,6 +130,7 @@ int main()
     } while (n > N);
 
     cout << "================= NHAP CHI TIET THONG TIN NHAN VIEN =================" << endl;
+
     inputListEmployee(ptr, n);
     cout << "\n======================= THONG TIN NHAN VIEN =======================" << endl;
     outputListEmployee(ptr, n);

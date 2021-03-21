@@ -1,0 +1,16 @@
+3
+Nguyen Huy Thanh
+HVKTQS
+MSV01
+K16 KTPM
+3.4
+Nguyen Thi Thu Thuy
+DHTM
+MSV02
+K53 IS
+3.02
+Nguyen Hong Son
+DHCN
+MSV03
+K46 CNOT
+3.5
