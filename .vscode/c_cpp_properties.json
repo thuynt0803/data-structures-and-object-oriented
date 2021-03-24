@@ -10,14 +10,13 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:\\Program Files\\MinGW\bin\\gcc.exe",
+            "compilerPath": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
             "cStandard": "c89",
             "cppStandard": "gnu++98",
             "intelliSenseMode": "windows-gcc-x86",
             "browse": {
                 "path": [
-                    "${workspaceFolder}/**",
-                    "C:\\Program Files\\MinGW\\lib\\gcc\\mingw32\\6.3.0\\include\\c++"
+                    "${workspaceFolder}/**"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
