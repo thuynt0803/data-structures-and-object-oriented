@@ -1,5 +1,6 @@
 /* 
-DEMO TINH KE THUA TRONG HUONG DOI TUONG
+    *** DEMO MOT CHUONG TRINH NHO VE TINH KE THUA TRONG OOP ***
+
     De bai: Loai xe cho thue: xe dap, xe may. Trong do:
         - xe dap: ho ten nguoi thue, so gio thue,
                   tien thue xe dap: 10000d cho gio dau, 8000 cho moi gio tiep theo
@@ -11,8 +12,7 @@ DEMO TINH KE THUA TRONG HUONG DOI TUONG
         1. XD cac class can thiet, nhap danh sach thong tin thue xe
         2. Xuat thong tin thue xe (bao gom ca tien thue)
         3. Tinh tong so tien cho thue xe dap va xe may
-        4. Xuat tat ca thong tin lien quan den viec thue xe dap
-        5. Tinh tong so tien cho thue xe may loai 250 phan khoi
+        4. Tinh tong so tien cho thue xe may loai 250 phan khoi
 */
 
 #include <iostream>
@@ -32,7 +32,7 @@ public:
         cout << "\nHo ten nguoi thue xe: ";
         getline(cin, hotennguoithue);
         fflush(stdin);
-        cout << "\nSo gio thue: ";
+        cout << "So gio thue: ";
         cin >> sogiothue;
     }
 
@@ -63,17 +63,17 @@ public:
     void inputInfo()
     {
         XE::inputInfo();
-        cout << "\nLoai xe muon thue: ";
+        cout << "Loai xe muon thue (100/250 phan khoi): ";
         cin >> loaixe;
         fflush(stdin);
-        cout << "\nBien xe: ";
+        cout << "Bien xe: ";
         getline(cin, bienso);
     }
 
     void outputInfo()
     {
         XE::outputInfo();
-        cout << "\nLoai xe: " << loaixe << endl;
+        cout << "Loai xe: " << loaixe << endl;
         cout << "Bien so xe: " << bienso << endl;
     }
 
@@ -88,6 +88,17 @@ public:
             s = 200000;
         return s + ((sogiothue - 1) * 100000);
     }
+
+    //GETTER - Loai xe
+    int getterLoaiXe()
+    {
+        return loaixe;
+    }
+
+    void setterLoaiXe(int LOAIXE)
+    {
+        loaixe = LOAIXE;
+    }
 };
 
 // phuong thuc xuat tat ca thong tin thue xe
@@ -97,14 +108,14 @@ void ouputAllInfor(XeDap ds_xedap[], int n, XeMay ds_xemay[], int m)
     for (int i = 0; i < n; i++)
     {
         ds_xedap[i].outputInfo();
-        cout << "\nTien thue: " << ds_xedap[i].tinhTienThue();
+        cout << "Tien thue: " << (size_t)ds_xedap[i].tinhTienThue();
     }
 
     cout << "\n\n\t\t DANH SACH THUE XE MAY" << endl;
     for (int i = 0; i < m; i++)
     {
         ds_xemay[i].outputInfo();
-        cout << "\nTien thue: " << ds_xemay[i].tinhTienThue();
+        cout << "Tien thue: " << (size_t)ds_xemay[i].tinhTienThue() << endl;
     }
 }
 
@@ -133,12 +144,12 @@ void menu(XeDap ds_xedap[], int n, XeMay ds_xemay[], int m)
     int luachon;
     while (true)
     {
+        system("cls");
         cout << "\n\n\t\t =============== QUAN LY THUE XE ===============" << endl;
         cout << "\t1. Nhap danh sach thue xe dap va xe may" << endl;
         cout << "\t2. Xuat tat ca thong tin thue xe" << endl;
         cout << "\t3. Tinh tong so tien cho thue xe dap va xe may" << endl;
-        cout << "\t4. Xuat tat ca cac thong tin lien quan den viec cho thue xe dap" << endl;
-        cout << "\t5. Tinh tong so tien cho thue xe may loai 250 phan khoi" << endl;
+        cout << "\t4. Tinh tong so tien cho thue xe may loai 250 phan khoi" << endl;
         cout << "\t0. Ket thuc" << endl;
         cout << "\n\n\t\t ====================== END ======================";
 
@@ -184,8 +195,25 @@ void menu(XeDap ds_xedap[], int n, XeMay ds_xemay[], int m)
         }
         else if (luachon == 3)
         {
-            cout << "\n\n\t\tTong tien thue xe la: " << totalRent(ds_xedap, n, ds_xemay, m) << endl;
+            cout << "\n\tTONG TAT CA TIEN THUE XE = " << size_t(totalRent(ds_xedap, n, ds_xemay, m)) << endl;
             system("pause");
+        }
+        else if (luachon == 4)
+        {
+            cout << "\n\t\tDANH SACH THUE XE MAY LOAI 250 PHAN KHOI" << endl;
+            for (int i = 0; i < m; i++)
+            {
+                if (ds_xemay[i].getterLoaiXe() == 250)
+                {
+                    ds_xemay[i].outputInfo();
+                    cout << "Tien thue: " << (size_t)ds_xemay[i].tinhTienThue() << endl;
+                }
+            }
+            system("pause");
+        }
+        else
+        {
+            break;
         }
     }
 }
