@@ -1,22 +1,5 @@
-/* 
-    *** DEMO MOT CHUONG TRINH NHO VE TINH KE THUA TRONG OOP ***
-
-    De bai: Loai xe cho thue: xe dap, xe may. Trong do:
-        - xe dap: ho ten nguoi thue, so gio thue,
-                  tien thue xe dap: 10000d cho gio dau, 8000 cho moi gio tiep theo
-        - xe may: ho ten nguoi thue, so gio thue, loai xe(100 phan khoi, 250 phan khoi), bien so.
-                  tien thue xe may: gio dau: 150000d - xe 100 pk; 200000d - xe 250 pk
-                                    gio tiep theo: 100000 cho ca 2 loai xe
-    
-    Yeu cau:
-        1. XD cac class can thiet, nhap danh sach thong tin thue xe
-        2. Xuat thong tin thue xe (bao gom ca tien thue)
-        3. Tinh tong so tien cho thue xe dap va xe may
-        4. Tinh tong so tien cho thue xe may loai 250 phan khoi
-*/
-
 #include <iostream>
-#include <string>
+#include <string> 
 using namespace std;
 
 class XE

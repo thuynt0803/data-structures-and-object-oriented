@@ -1,0 +1,13 @@
+**************** KE THUA - UNG DUNG TRONG BAI TOAN QUAN LY NHAN VIEN ****************
+                                SU DUNG CON TRO
+=====================================================================================
+
+ĐỀ BÀI: Có 3 loại nhân viên: NV sửa ổng nước, NV giao hàng, NV xe ôm công nghệ
+YÊU CẦU:
+    1. Mô tả và phân tích các thông tin cần thiết để quản lý các nhân viên trên
+    2. Tính tiền lương hàng tháng của 3 nhân viên, biết:
+        NV sửa ống nước: lương = số giờ sửa * 100000
+        NV giao hàng: lương = số hàng giao * 50000
+        NV xe ôm: lương = số km * 10000
+    3. Tính tổng tiền lương phải trả cho tất cả nhân viên
+    4. Thống kê danh sách nhân viên giảm dần theo lương
