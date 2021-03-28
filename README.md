@@ -2,6 +2,7 @@
 
 Algorithm written by me in C ++
 
+
 # Consists of:
 
 ## Programming basic

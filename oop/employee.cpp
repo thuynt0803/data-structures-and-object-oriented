@@ -217,7 +217,8 @@ void menu(employeeSON *list_NVSON[], int n, employeeGH *list_NVGH[], int m, empl
         cin >> luachon;
         if (luachon < 0 || luachon > 8)
         {
-            cout << "\n*NOTE: Lua chon khong hop le, vui long nhap lai.";
+            cout << "\n*NOTE: Lua chon khong hop le, vui long nhap lai." << endl;
+            system("pause");
         }
         else if (luachon == 0)
         {
@@ -309,8 +310,6 @@ void menu(employeeSON *list_NVSON[], int n, employeeGH *list_NVGH[], int m, empl
 
             system("pause");
         }
-        else
-            break;
     }
 
     // giai phong cac doi tuong con tro cho danh sach nv sua ong nuoc
