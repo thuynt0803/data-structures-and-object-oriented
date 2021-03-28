@@ -19,19 +19,22 @@ void Library::inputInfo()
         cout << "\nNhap lua chon cua ban: ";
         cin >> luachon;
 
+        DocGia *x; // khai báo con trỏ lớp cha
         if (luachon == 1)
         {
-            DocGiaTreEm x; //khai bao doi tuong DGTE - de nhap thong tin
+            x = new DocGiaTreEm; // dùng x để new ra 1 đối tượng con là DocGiaTreEm
             cout << "\n\n\t\t NHAP THONG TIN DOC GIA TRE EM" << endl;
-            x.inputInfo();
-            ds_DocGiaTreEm.push_back(x); // them doi tuong DGTE x vao trong mang vector DGTE
+            x->inputInfo();
+            x->Setter_KT(true);     // Đánh dấu x là độc giả trẻ em
+            ds_DocGia.push_back(x); // thêm một đối tượng con vào mảng DocGia
         }
         else if (luachon == 2)
         {
-            DocGiaNguoiLon x; //khai bao doi tuong DGTE - de nhap thong tin
+            x = new DocGiaNguoiLon; // dùng x để new ra 1 đối tượng con là DocGiaNguoiLon
             cout << "\n\n\t\t NHAP THONG TIN DOC GIA NGUOI LON" << endl;
-            x.inputInfo();
-            ds_DocGiaNguoiLon.push_back(x); // them doi tuong DGTE x vao trong mang vector DGTE
+            x->inputInfo();
+            x->Setter_KT(false);    // Đánh dấu x là độc giả người lớn
+            ds_DocGia.push_back(x); // thêm một đối tượng con vào mảng DocGia
         }
         else if (luachon == 0)
         {
@@ -48,18 +51,20 @@ void Library::inputInfo()
 // phuong thuc xuat thong tin doc gia
 void Library::outputInfo()
 {
-    // xuat thong tin Doc gia tre em
-    cout << "\n\n\t\t THONG TIN DANH SACH DOC GIA TRE EM" << endl;
-    for (int i = 0; i < ds_DocGiaTreEm.size(); i++) // ds_DocGiaTreEm.size() - so luong phan tu hien co trong ds DGTE
+    // xuat thong tin Doc gia
+    cout << "\n\n\t\t ======= DANH SACH DOC GIA =======" << endl;
+    for (int i = 0; i < ds_DocGia.size(); i++) // ds_DocGia.size() - so luong phan tu hien co trong ds_DocGia
     {
-        ds_DocGiaTreEm[i].outputInfo();
-    }
-
-    // xuat thong tin Doc gia nguoi lon
-    cout << "\n\n\t\t THONG TIN DANH SACH DOC GIA NGUOI LON" << endl;
-    for (int i = 0; i < ds_DocGiaNguoiLon.size(); i++) // ds_DocGiaTreEm.size() - so luong phan tu hien co trong ds DGTE
-    {
-        ds_DocGiaNguoiLon[i].outputInfo();
+        if (ds_DocGia[i]->Getter_KT() == true)
+        {
+            cout << "\nDoc gia tre em " << i + 1;
+            ds_DocGia[i]->outputInfo();
+        }
+        else
+        {
+            cout << "\nDoc gia nguoi lon " << i + 1;
+            ds_DocGia[i]->outputInfo();
+        }
     }
 }
 
@@ -67,16 +72,10 @@ void Library::outputInfo()
 int Library::tongTienLamThe()
 {
     int sum = 0;
-    // duyet danh sach DGTE
-    for (int i = 0; i < ds_DocGiaTreEm.size(); i++)
+    // duyet danh sach DocGia
+    for (int i = 0; i < ds_DocGia.size(); i++)
     {
-        sum += ds_DocGiaTreEm[i].tinhTienLamThe();
-    }
-
-    // duyet danh sach DGNL
-    for (int i = 0; i < ds_DocGiaNguoiLon.size(); i++)
-    {
-        sum += ds_DocGiaNguoiLon[i].tinhTienLamThe();
+        sum += ds_DocGia[i]->tinhTienLamThe();
     }
     return sum;
 }

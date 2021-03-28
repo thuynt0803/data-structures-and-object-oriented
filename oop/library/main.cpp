@@ -1,3 +1,4 @@
+#include <iostream>
 #include "./headerFiles/ThuVien.h"
 
 int main()
@@ -5,8 +6,8 @@ int main()
     Library *x = new Library;
     x->inputInfo();
     x->outputInfo();
+    cout << "\n\t TONG TIEN LAM THE: " << x->tongTienLamThe() << endl;
 
-    cout << "\n\t\t TONG TIEN LAM THE: " << x->tongTienLamThe() << endl;
     delete x;
     system("pause");
     return 0;

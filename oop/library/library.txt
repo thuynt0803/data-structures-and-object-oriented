@@ -56,6 +56,6 @@ YÊU CẦU:
         tongtienlamthe(): int
 
 NOTE: *run file
-    $ g++ DocGia.cpp DocGiaTreEm.cpp  main.cpp -o library
+    $ g++ DocGia.cpp DocGiaNguoiLon.cpp DocGiaTreEm.cpp ThuVien.cpp main.cpp
     makefile
     file .bat

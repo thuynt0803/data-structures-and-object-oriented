@@ -6,8 +6,7 @@
 class Library
 {
 private:
-    vector<DocGiaTreEm> ds_DocGiaTreEm;
-    vector<DocGiaNguoiLon> ds_DocGiaNguoiLon;
+    vector<DocGia *> ds_DocGia; // Áp dụng tính đa hình, khai báo mạng 1 chiều chứa lớp cha - vì có virtual --> đa hình sang từng thằng con tương ứng.
 
 public:
     void inputInfo();
@@ -17,5 +16,3 @@ public:
     Library(/* args */);
     ~Library();
 };
-
-
