@@ -18,3 +18,9 @@ Tổng hợp các kiến thức cơ bản trong CTDL
     - Thêm vào cuối danh sách
     - Thêm node p sau node q
     - Thêm node p trước node q
+    - * Tìm node có giá trị v trong danh sách
+    - Xóa 1 node trong danh sách: đầu - cuối - sau q - trước q - xóa vị trí bất kỳ
+
+## Stack
+
+    - 

@@ -1,7 +1,4 @@
-/*
-    Cài đặt Linked List. 
-    Bài toán: Nhập danh sách liên kết đơn các số nguyên. Tìm giá trị lớn nhất trong danh sách 
-*/
+/*    Bài toán: Nhập danh sách liên kết đơn các số nguyên. Tìm giá trị lớn nhất trong danh sách   */
 
 #include <iostream>
 using namespace std;
@@ -159,6 +156,106 @@ void inputFirstAnything(LIST &l, NODE *p)
     }
 }
 
+// Hàm xóa node đầu danh sách
+void deleteFirst(LIST &l)
+{
+    // Neu danh sach rong
+    if (l.pHead == NULL)
+    {
+        return;
+    }
+    NODE *p = l.pHead;        // node p la node se duoc xoa
+    l.pHead = l.pHead->pNext; // cap nhat lai l.pHead la phan tu ke tiep
+    delete p;
+}
+
+// Hàm xóa node cuối danh sách
+void deleteLast(LIST &l)
+{
+    // Neu danh sach rong
+    if (l.pHead == NULL)
+    {
+        return;
+    }
+
+    // trường hợp danh sách có 1 phần tử
+    if (l.pHead->pNext == NULL)
+    {
+        deleteFirst(l);
+        return;
+    }
+
+    // duyệt từ đầu danh sách đến node kế cuối
+    for (NODE *k = l.pHead; k != NULL; k = k->pNext)
+    {
+        // phát hiện thằng kế cuối
+        if (k->pNext == l.pTail)
+        {
+            delete l.pTail;  // xo di phan tu cuoi
+            k->pNext = NULL; // cho con tro cua node ke cuoi tro den vung nho null
+            l.pTail = k;     // Cap nhat lai l.pTail
+            return;
+        }
+    }
+}
+
+// Hàm xóa 1 node năm sau node q trong danh sách
+void deleteLastAnything(LIST &l, NODE *q)
+{
+    // kiem tra danh sach rong
+    if (l.pHead == NULL)
+    {
+        return;
+    }
+
+    // duyet danh sach tu dau den cuoi de tim node q
+    for (NODE *k = l.pHead; k != NULL; k = k->pNext)
+    {
+        // phat hien node q
+        if (k->data == q->data)
+        {
+            NODE *g = k->pNext;  // node g la node nam sau node k <=> node duoc yeu cau xoa
+            k->pNext = g->pNext; // cap nhat moi lien ket giua node k (node q) voi node sau node g
+            delete g;            // xoa node nam sau node q
+        }
+    }
+}
+
+// Hàm xóa 1 node có khóa k (so nguyen x) bất kỳ
+void deleteAnyX(LIST &l, int x)
+{
+    // kiem tra danh sach rong
+    if (l.pHead == NULL)
+    {
+        return;
+    }
+    // neu node can xoa nam dau danh sach
+    if (l.pHead->data == x)
+    {
+        deleteFirst(l);
+        return;
+    }
+    // neu node can xoa nam cuoi danh sach
+    if (l.pTail->data == x)
+    {
+        deleteLast(l);
+        return;
+    }
+
+    NODE *g = new NODE; // node g la node tro den node nam truoc node can xoa (x)
+    // duyet danh sach de tim x
+    for (NODE *k = l.pHead; k != NULL; k = k->pNext)
+    {
+        if (k->data == x)
+        {
+            g->pNext = k->pNext; // cap nhat moi lien ket giua node k voi node sau node k
+            delete k;            // xoa node nam sau node k
+            return;
+        }
+        g = k; // cho node g tro den node k
+    }
+}
+
 // Hàm tìm giá trị lớn nhất trong danh sách
 int searchMax(LIST l)
 {
@@ -179,7 +276,7 @@ void outputList(LIST l)
 {
     for (NODE *k = l.pHead; k != NULL; k = k->pNext)
     {
-        cout << k->data << "\t";
+        cout << "\t" << k->data << "\t";
     }
 }
 
@@ -195,13 +292,18 @@ void menu(LIST &l)
         cout << "\t3. Them node p vao sau node q trong danh sach" << endl;
         cout << "\t4. Them node p vao truoc node q trong danh sach" << endl;
         cout << "\t5. Tim max trong danh sach da nhap" << endl;
+        cout << "\t6. Xoa node dau danh sach" << endl;
+        cout << "\t7. Xoa node cuoi danh sach" << endl;
+        cout << "\t8. Xoa 1 node sau node q danh sach" << endl;
+        cout << "\t9. Xoa node co khoa k bat ky" << endl;
+
         cout << "\t0. Thoat" << endl;
         cout << "\n\t\t==================== END ====================" << endl;
 
         cout << "\nNhap lua chon cua ban: ";
         cin >> luachon;
 
-        if (luachon < 0 || luachon > 5)
+        if (luachon < 0 || luachon > 9)
         {
             cout << "\nLua chon khong hop le, kiem tra lai!" << endl;
             system("pause");
@@ -216,7 +318,7 @@ void menu(LIST &l)
         }
         else if (luachon == 2)
         {
-            cout << "\n\n Danh sach duoc nhap la: ";
+            cout << "\n\n==> Danh sach duoc nhap la: ";
             outputList(l);
             cout << endl;
             system("pause");
@@ -241,6 +343,33 @@ void menu(LIST &l)
         {
             cout << "\n==> So lon nhat trong danh sach la: " << searchMax(l) << endl;
             system("pause");
+        }
+        else if (luachon == 6)
+        {
+            deleteFirst(l);
+            cout << "\n==> Da xoa phan tu dau danh sach" << endl;
+            system("pause");
+        }
+        else if (luachon == 7)
+        {
+            deleteLast(l);
+            cout << "\n==> Da xoa phan tu cuoi danh sach" << endl;
+            system("pause");
+        }
+        else if (luachon == 8)
+        {
+            int x;
+            cout << "\nNhap node q (node da ton tai trong danh sach): q = ";
+            cin >> x;
+            NODE *q = initNODE(x);
+            deleteLastAnything(l, q);
+        }
+        else if (luachon == 9)
+        {
+            int x;
+            cout << "\nNhap node can xoa: ";
+            cin >> x;
+            deleteAnyX(l, x);
         }
         else
             break;
