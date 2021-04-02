@@ -284,7 +284,7 @@ void menu(LIST &l)
 {
     int luachon;
     while (true)
-    {
+    {       
         system("cls");
         cout << "\n\n\t\t==================== MENU ====================" << endl;
         cout << "\n\t1. Them node vao danh sach" << endl;

@@ -21,6 +21,18 @@ Tổng hợp các kiến thức cơ bản trong CTDL
     - * Tìm node có giá trị v trong danh sách
     - Xóa 1 node trong danh sách: đầu - cuối - sau q - trước q - xóa vị trí bất kỳ
 
-## Stack
+## Stack - Queue
 
-    - 
+    - IsEmpty
+    - Push
+    - Pop
+    - Top
+
+## Search Binary Tree
+
+    - NLR
+    - NRL
+    - LNR
+    - RNL
+    - LRN
+    - RLN
