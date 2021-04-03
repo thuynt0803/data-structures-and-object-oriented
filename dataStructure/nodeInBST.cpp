@@ -5,7 +5,7 @@ Nhap vao cay nhi phan tim kiem cac so nguyen
     3. Xuat cac node co 1 con (chi ton tai 1 trong 2: cay con trai hoac cay con phai)
     4. Xuat cac node la (node khong ton tai cay con trai va cay con phai)
     5. Tim max - min
-    6. Xoa
+    6. Xoa node bat ky trong BST, bao gom: node 2 con, node 1 con, node la
 */
 
 #include <iostream>
@@ -222,6 +222,82 @@ int searchMin(TREE t)
     return searchMin(t->pLeft);
 }
 
+// ham tim node the mang de xoa
+void searchReplaceNode(TREE &X, TREE &Y) // NODE Y la node the mang cho node can xoa - node nay dam nhan nhiem vu tim ra node trai nhat (CACH 1) hoac tim ra node phai nhat (CACH 2)
+{
+    /* ************** CACH 1: TIM NODE TRAI NHAT CUA CAY CON PHAI ************** */
+    // duyet sang ben trai nhat
+    if (Y->pLeft != NULL)
+    {
+        searchReplaceNode(X, Y->pLeft); // duyet tim ra node trai nhat?
+    }
+    else // sau khi tim ra duoc node trai nhat roi
+    {
+        X->data = Y->data; // Cap nhat data cua node can xoa la data cua node the mang
+        X = Y;             // cho node x (node se bi xoa) tro den node the mang ==> ra khoi ham thi se xoa node X
+        Y = Y->pRight;     // ban chat la cap nhat lai moi lien ket cho node cha cua node the mang (ma chung ta se xoa) voi node con cua node the mang
+    }
+
+    /* ************** CACH 2: TIM NODE PHAI NHAT CUA CAY CON TRAI ************** */
+    // // duyet sang ben phai
+    // if (Y->pRight != NULL)
+    // {
+    //     searchReplaceNode(X, Y->pRight); // duyet tim ra node phai nhat?
+    // }
+    // else // sau khi tim ra duoc node phai nhat roi
+    // {
+    //     X->data = Y->data; // Cap nhat data cua node can xoa la data cua node the mang
+    //     X = Y;             // cho node x (node se bi xoa) tro den node the mang ==> ra khoi ham thi se xoa node X
+    //     Y = Y->pLeft;      // ban chat la cap nhat lai moi lien ket cho node cha cua node the mang (ma chung ta se xoa) voi node con cua node the mang
+    // }
+}
+
+// xoa 1 node bat ky trong BST
+void deleteNode(TREE &t, int data) // data la gia tri cua node can xoa
+{
+    if (t == NULL)
+    {
+        return; // ket thuc ham
+    }
+    else
+    {
+        // data nho hon root
+        if (data < t->data)
+        {
+            deleteNode(t->pLeft, data); // duyet sang nhanh trai cua cay
+        }
+        else if (data > t->data)
+        {
+            deleteNode(t->pRight, data); // duyet sang nhanh phai cua cay
+        }
+        else // data == t->data : da tim ra phan tu can xoa
+        {
+            NODE *X = t;          // node X la node the mang - de xoa
+            if (t->pLeft == NULL) // neu nhanh trai = NULL --> day la cay con phai
+            {
+                // duyet sang phai cua cai node can xoa de cap nhat lien ket
+                // giua node cha cua node can xoa voi node con cua node can xoa
+                t = t->pRight;
+            }
+            else if (t->pRight == NULL) // neu nhanh phai = NULL --> day la cay con trai
+            {
+                // duyet sang trai cua cai node can xoa de cap nhat lien ket
+                // giua node cha cua node can xoa voi node con cua node can xoa
+                t = t->pLeft;
+            }
+            else // node can xoa la node co 2 con
+            {
+                //	Cách 1: tìm node trái nhất của cây con phải (cây con phải của node cần xóa)
+                searchReplaceNode(X, t->pRight);
+                // Cách 2: tìm node phải nhất của cây con trái (cây con trái của node cần xóa)
+                // searchReplaceNode(X, t->pLeft);
+            }
+
+            delete X; // xoa node can xoa
+        }
+    }
+}
+
 // menu
 void menu(TREE &t)
 {
@@ -238,6 +314,8 @@ void menu(TREE &t)
         cout << "\t\t6. Xuat cac node la trong BST." << endl;
         cout << "\t\t7. Xuat node co gia tri Max trong BST." << endl;
         cout << "\t\t8. Xuat node co gia tri Min trong BST." << endl;
+        cout << "\t\t9. Xoa node bat ky trong BST." << endl;
+
         cout << "\t\t0. Thoat." << endl;
         cout << "\n\t ============================= END =============================" << endl;
 
@@ -323,6 +401,15 @@ void menu(TREE &t)
 
             /* ******* CACH 2 ******* */
             cout << "\n\tMin(node) = " << searchMin(t) << endl;
+            system("pause");
+        }
+        else if (select == 9)
+        {
+            int x;
+            cout << "\n\tNhap gia tri can xoa: ";
+            cin >> x;
+            deleteNode(t, x);
+            cout << "\n\t==> Xoa " << x << " thanh cong." << endl;
             system("pause");
         }
         else

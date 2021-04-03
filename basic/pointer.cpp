@@ -66,7 +66,7 @@ int countX(int *p, int n, int x)
     cout << "\t- Phan tu 'x' xuat hien " << count << " lan trong day so." << endl;
 }
 
-// ERROR
+// ERROR - not fixed
 int locationX(int *p, int n, int x)
 {
 

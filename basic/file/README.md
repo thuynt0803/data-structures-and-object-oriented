@@ -1,9 +1,9 @@
 # (>.<)
 
 > Có quá nhiều rắc rối xảy ra khi tôi làm việc với tập tin chứa ký tự unicode trên nền tảng windows, tôi đã nghĩ mình sẽ bỏ cuộc ... aaa ...
+> Mặc dù biết phần này khá quan trọng mà thôi để làm sau vậy!!! -.-
 
 # Tổng quát
-
 ## Thư viện:
 
 > - ifstream : hỗ trợ đọc gữ liệu từ file (bản chất là 1 class)

@@ -9,7 +9,6 @@
         - hàm tính logarit: log(x); ln(xl = og10(x);
 */
 
-
 #include <iostream>
 #include <math.h>
 using namespace std;
