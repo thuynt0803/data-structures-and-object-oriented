@@ -1,7 +1,7 @@
 # C++ Algorithms
 
 Algorithm written by me in C ++
-
+(I'm not sure it's perfect )
 
 # Consists of:
 
@@ -38,10 +38,14 @@ Basic commands:
 > - Struct pointer
 > - File data type
 
-
 ## Object oriented programming
 
 Techniques in object oriented programming
+
+> - Abstraction (truu tuong)
+> - Encapsulation (dong goi)
+> - Inheritance (ke thua)
+> - Polymorphism (da hinh)
 
 ## Data structures
 
